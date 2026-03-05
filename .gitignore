@@ -29,3 +29,14 @@ migrate_working_dir/
 .flutter-plugins-dependencies
 /build/
 /coverage/
+
+# 패키지 추가 항목
+.flutter-plugins
+.packages
+
+# example 앱 빌드 결과물
+example/.dart_tool/
+example/.flutter-plugins
+example/.flutter-plugins-dependencies
+example/build/
+example/pubspec.lock  # example은 앱이므로 lock 포함해도 되지만 배포엔 불필요
