@@ -1,39 +1,53 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# flutter_rotating_shining_card
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A Flutter widget that displays a 3D rotating card with realistic light reflection effects, including specular highlight, fresnel edge glow, and rainbow shimmer.
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- 🔄 3D card flip with pan gesture
+- ✨ Ambient light from top-left with tilt response  
+- 💡 Specular highlight based on tilt angle
+- 🌟 Fresnel edge glow effect
+- 🌈 Rainbow shimmer overlay
+- 👆 Multi-layer radial touch shine
+- 🎯 Snap animation on release
 
-## Getting started
+## Installation
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yaml
+dependencies:
+  flutter_rotating_shining_card: ^1.0.0
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
 ```dart
-const like = 'sample';
+import 'package:flutter_rotating_shining_card/flutter_rotating_shining_card.dart';
+
+RotatingShiningCard(
+  width: 240,
+  height: 340,
+  frontChild: Image.asset('assets/front.png', fit: BoxFit.cover),
+  backChild: Image.asset('assets/back.png', fit: BoxFit.cover),
+  borderRadius: 16.0,
+  shineIntensity: 0.6,
+  shineColor: Colors.white,
+)
 ```
 
-## Additional information
+## Parameters
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+| Parameter | Type | Default | Description |
+|---|---|---|---|
+| `frontChild` | `Widget` | required | Front face widget |
+| `backChild` | `Widget` | required | Back face widget |
+| `width` | `double` | required | Card width |
+| `height` | `double` | required | Card height |
+| `borderRadius` | `double` | `8.0` | Corner radius |
+| `shineIntensity` | `double` | `0.5` | Light intensity (0.0~1.0) |
+| `shineColor` | `Color` | `Colors.white` | Shine color |
+
+## Credits
+
+Inspired by [rotating_shining_card](https://pub.dev/packages/rotating_shining_card) by [Hassan Zafar](https://github.com/hassan-zafar/360_rotating_shining_card).  
+This package extends the original with improved light reflection, specular highlight, fresnel edge glow, rainbow shimmer, and bug fixes.
