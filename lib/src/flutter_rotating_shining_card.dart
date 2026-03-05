@@ -192,11 +192,12 @@ class RotatingShiningCardState extends State<RotatingShiningCard>
               center: Alignment(lightX, lightY),
               radius: 1.4,
               colors: [
-                widget.shineColor.withOpacity(
-                    (0.35 + (_isTouching ? 0.15 : 0.0)) *
+                widget.shineColor.withValues(
+                    alpha: (0.35 + (_isTouching ? 0.15 : 0.0)) *
                         widget.shineIntensity *
                         2),
-                widget.shineColor.withOpacity(0.05 * widget.shineIntensity * 2),
+                widget.shineColor
+                    .withValues(alpha: 0.05 * widget.shineIntensity * 2),
                 Colors.transparent,
               ],
               stops: const [0.0, 0.5, 1.0],
@@ -229,8 +230,8 @@ class RotatingShiningCardState extends State<RotatingShiningCard>
             shape: BoxShape.circle,
             gradient: RadialGradient(
               colors: [
-                Colors.white.withOpacity(
-                    (tiltMagnitude * 0.7 * widget.shineIntensity)
+                Colors.white.withValues(
+                    alpha: (tiltMagnitude * 0.7 * widget.shineIntensity)
                         .clamp(0.0, 0.8)),
                 Colors.transparent,
               ],
@@ -256,7 +257,7 @@ class RotatingShiningCardState extends State<RotatingShiningCard>
               begin: Alignment(-_tiltY, -_tiltX),
               end: Alignment(_tiltY * 0.5, _tiltX * 0.5),
               colors: [
-                Colors.white.withOpacity(opacity),
+                Colors.white.withValues(alpha: opacity),
                 Colors.transparent,
               ],
               stops: const [0.0, 0.45],
@@ -285,13 +286,13 @@ class RotatingShiningCardState extends State<RotatingShiningCard>
               startAngle: angle,
               endAngle: angle + math.pi,
               colors: [
-                Colors.red.withOpacity(opacity),
-                Colors.orange.withOpacity(opacity),
-                Colors.yellow.withOpacity(opacity),
-                Colors.green.withOpacity(opacity),
-                Colors.blue.withOpacity(opacity),
-                Colors.purple.withOpacity(opacity),
-                Colors.red.withOpacity(opacity),
+                Colors.red.withValues(alpha: opacity),
+                Colors.orange.withValues(alpha: opacity),
+                Colors.yellow.withValues(alpha: opacity),
+                Colors.green.withValues(alpha: opacity),
+                Colors.blue.withValues(alpha: opacity),
+                Colors.purple.withValues(alpha: opacity),
+                Colors.red.withValues(alpha: opacity),
               ],
             ),
           ),
@@ -316,7 +317,7 @@ class RotatingShiningCardState extends State<RotatingShiningCard>
             shape: BoxShape.circle,
             gradient: RadialGradient(
               colors: [
-                widget.shineColor.withOpacity(opacity.clamp(0.0, 1.0)),
+                widget.shineColor.withValues(alpha: opacity.clamp(0.0, 1.0)),
                 Colors.transparent,
               ],
             ),
