@@ -55,6 +55,7 @@ class RotatingShiningCardState extends State<RotatingShiningCard>
   late Animation<double> _snapAnimation;
   double _snapStartAngle = 0.0;
   double _snapTargetAngle = 0.0;
+  bool _dragStartedOnBack = false;
 
   @override
   void initState() {
@@ -82,12 +83,20 @@ class RotatingShiningCardState extends State<RotatingShiningCard>
     _snapController.stop();
     setState(() {
       _isTouching = true;
-      _flipAngle += -delta.dx / widget.width * math.pi;
+
+      // ✅ 드래그 시작 시점의 면 기준으로 방향 고정
+      final directionFactor = _dragStartedOnBack ? 1.0 : -1.0;
+      _flipAngle += directionFactor * delta.dx / widget.width * math.pi;
       rotationY = _flipAngle;
+
       final centerY = widget.height / 2;
       rotationX = ((localPosition.dy - centerY) / centerY) * (math.pi / 10);
       shineOffset = localPosition;
     });
+  }
+
+  void onTouchStart() {
+    _dragStartedOnBack = _isBackVisible;
   }
 
   void onTouchEnd() {
@@ -126,6 +135,7 @@ class RotatingShiningCardState extends State<RotatingShiningCard>
         ..rotateX(rotationX)
         ..rotateY(rotationY),
       child: GestureDetector(
+        onPanStart: (_) => onTouchStart(),
         onPanUpdate: (d) => onTouchMove(d.localPosition, d.delta),
         onPanEnd: (_) => onTouchEnd(),
         onPanCancel: () => onTouchEnd(),
