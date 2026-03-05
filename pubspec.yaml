@@ -1,6 +1,6 @@
 name: flutter_rotating_shining_card
 description: "A Flutter widget that displays a 3D rotating card with realistic light reflection, specular highlight, fresnel edge glow, and rainbow shimmer effects."
-version: 1.0.1
+version: 1.0.2
 homepage: 'https://github.com/SLT-DJH/flutter_rotating_shining_card'
 repository: https://github.com/SLT-DJH/flutter_rotating_shining_card
 issue_tracker: https://github.com/SLT-DJH/flutter_rotating_shining_card/issues
